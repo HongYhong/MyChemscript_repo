@@ -29,12 +29,12 @@ for i in range(0,protein.GetNumAtoms()):
     zcoordinates.append(pos.z)
 
 #edges coordinates of the box
-max_x = max(xcoordinates) + buffer
-min_x = min(xcoordinates) - buffer
-max_y = max(ycoordinates) + buffer
-min_y = min(ycoordinates) - buffer
-max_z = max(zcoordinates) + buffer
-min_z = min(zcoordinates) - buffer
+max_x = round(max(xcoordinates) + buffer)
+min_x = round(min(xcoordinates) - buffer)
+max_y = round(max(ycoordinates) + buffer)
+min_y = round(min(ycoordinates) - buffer)
+max_z = round(max(zcoordinates) + buffer)
+min_z = round(min(zcoordinates) - buffer)
 
 #input parameters for autodock vina
 x_center = round((max_x + min_x)/2,2)
@@ -43,6 +43,9 @@ z_center = round((max_z + min_z)/2,2)
 x_size = round(max_x - min_x,2)
 y_size = round(max_y - min_y,2)
 z_size = round(max_z - min_z,2)
+
+
+
 
 if args.format == None or args.format == 'vina':
     with open('./config.txt','w') as conffile:
